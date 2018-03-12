@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.garrett.assignment1.NightclubActivity">
+    <TextView
+        android:id="@+id/textClubName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nightclub Name:"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        />
+
+    <EditText
+        android:id="@+id/editClubName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textClubName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:ems="14"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
+        />
+
+    <TextView
+        android:id="@+id/textClubStreetAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nightclub Address:"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/editClubName"
+        />
+
+    <EditText
+        android:id="@+id/editClubStreetAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:ems="15"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords"
+        android:layout_below="@id/textClubStreetAddress"
+        />
+    <EditText
+        android:id="@+id/editClubCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/editClubStreetAddress"
+        android:ems="8"
+        android:imeOptions="actionNext"
+        android:nextFocusDown="@id/editClubState"
+        android:inputType="textCapWords"
+        />
+
+    <EditText
+        android:id="@+id/editClubState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/editClubCity"
+        android:layout_toEndOf="@id/editClubCity"
+        android:ems="2"
+        android:layout_alignBottom="@id/editClubCity"
+        android:maxLength="2"
+        android:imeOptions="actionNext"
+        android:nextFocusDown="@id/editClubZipcode"
+        android:inputType="textCapCharacters"
+        />
+
+    <EditText
+        android:id="@+id/editClubZipcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/editClubState"
+        android:layout_toEndOf="@id/editClubState"
+        android:layout_alignBottom="@id/editClubState"
+        android:ems="5"
+         android:maxLength="5"
+        android:imeOptions="actionNext"
+        android:inputType="numberSigned"
+        />
+
+</RelativeLayout>
