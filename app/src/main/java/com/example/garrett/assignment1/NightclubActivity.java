@@ -2,6 +2,8 @@ package com.example.garrett.assignment1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 public class NightclubActivity extends AppCompatActivity {
 
@@ -17,10 +19,12 @@ public class NightclubActivity extends AppCompatActivity {
     }
 
     private void initSaveButton() {
+        Button saveButton = (Button) findViewById(R.id.buttonSaveClub);
 
     }
 
     private void initAddButton() {
+
 
     }
 
