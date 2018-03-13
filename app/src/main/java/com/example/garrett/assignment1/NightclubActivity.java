@@ -9,6 +9,26 @@ public class NightclubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nightclub);
+        initAddButton();
+        initMapButton();
+        initListButton();
+        initSaveButton();
+
+    }
+
+    private void initSaveButton() {
+
+    }
+
+    private void initAddButton() {
+
+    }
+
+    private void initMapButton() {
+
+    }
+
+    private void initListButton() {
 
     }
 }

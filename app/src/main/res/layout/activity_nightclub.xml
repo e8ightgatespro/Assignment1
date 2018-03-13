@@ -113,14 +113,13 @@
         android:id="@+id/navbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/navbar_background"
+        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        >
 
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/imageAddClub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -131,7 +130,7 @@
             app:srcCompat="@drawable/plus" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/imageListClub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -142,7 +141,7 @@
             app:srcCompat="@drawable/contactlisticon" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/imageShowClub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
