@@ -1,8 +1,60 @@
 package com.example.garrett.assignment1;
 
-/**
- * Created by Garrett on 3/12/2018.
- */
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
-public class NightclubListActivity {
+
+public class NightclubListActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_nightclub_list);
+        initAddButton();
+        initMapButton();
+        initListButton();
+    }
+
+
+    private void initAddButton() {
+        ImageButton imAdd = findViewById(R.id.imageAddClub);
+        imAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NightclubListActivity.this, NightclubActivity.class);
+                intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void initMapButton() {
+        ImageButton imMap = findViewById(R.id.imageShowClub);
+        imMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NightclubListActivity.this, NightclubMapActivity.class);
+                intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void initListButton() {
+        ImageButton imList = findViewById(R.id.imageListClub);
+        imList.setEnabled(false);
+        imList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NightclubListActivity.this, NightclubListActivity.class);
+                intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+    }
 }
+
