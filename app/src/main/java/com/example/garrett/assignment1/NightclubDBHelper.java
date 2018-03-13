@@ -13,7 +13,8 @@ public class NightclubDBHelper extends SQLiteOpenHelper{
 
     private static final String CREATE_TABLE_NIGHTCLUB = "create table nightclub (_id integer primary key autoincrement, "
             + "nightclubname text not null, streetaddress, "
-            + "city text, state text, zipcode text);";
+            + "city text, state text, zipcode text, "
+            + "beer int, wine int, music int, average int);";
 
     public NightclubDBHelper(Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);

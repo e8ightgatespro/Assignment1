@@ -8,6 +8,10 @@ public class Nightclub {
     private String city;
     private String state;
     private String zipcode;
+    private int beer;
+    private int wine;
+    private int music;
+    private int average;
 
     public int getNightclubID() {
         return nightclubID;
@@ -55,5 +59,35 @@ public class Nightclub {
         this.zipcode = zipcode;
     }
 
+    public int getBeer() {
+        return beer;
+    }
 
+    public void setBeer(int beer) {
+        this.beer = beer;
+    }
+
+    public int getWine() {
+        return wine;
+    }
+
+    public void setWine(int wine) {
+        this.wine = wine;
+    }
+
+    public int getMusic() {
+        return music;
+    }
+
+    public void setMusic(int music) {
+        this.music = music;
+    }
+
+    public int getAverage() {
+        return average;
+    }
+
+    public void setAverage(int average) {
+        this.average = average;
+    }
 }

@@ -33,6 +33,10 @@ public class NightclubDataSource {
             initialValues.put("city", n.getCity());
             initialValues.put("state", n.getState());
             initialValues.put("zipcode", n.getZipcode());
+            initialValues.put("beer", n.getBeer());
+            initialValues.put("wine", n.getWine());
+            initialValues.put("music", n.getMusic());
+            initialValues.put("average", n.getAverage());
 
 
             didSucceed = database.insert("nightclub",null,initialValues) > 0;
@@ -56,6 +60,10 @@ public class NightclubDataSource {
             updateValues.put("city", n.getCity());
             updateValues.put("state", n.getState());
             updateValues.put("zipcode",n.getZipcode());
+            updateValues.put("beer", n.getBeer());
+            updateValues.put("wine", n.getWine());
+            updateValues.put("music", n.getMusic());
+            updateValues.put("average", n.getAverage());
             didSucceed = database.update("nightclub", updateValues, "_id=" + rowId,null) > 0;
         }
         catch(Exception e) {
@@ -98,6 +106,10 @@ public class NightclubDataSource {
                 newNightclub.setCity(cursor.getString(3));
                 newNightclub.setState(cursor.getString(4));
                 newNightclub.setZipcode(cursor.getString(5));
+                newNightclub.setBeer(cursor.getInt(6));
+                newNightclub.setWine(cursor.getInt(7));
+                newNightclub.setMusic(cursor.getInt(8));
+                newNightclub.setAverage(cursor.getInt(9));
 
                 nightclubs.add(newNightclub);
                 cursor.moveToNext();
@@ -123,6 +135,10 @@ public class NightclubDataSource {
             nightclub.setCity(cursor.getString(3));
             nightclub.setState(cursor.getString(4));
             nightclub.setZipcode(cursor.getString(5));
+            nightclub.setBeer(cursor.getInt(6));
+            nightclub.setWine(cursor.getInt(7));
+            nightclub.setMusic(cursor.getInt(8));
+            nightclub.setAverage(cursor.getInt(9));
             cursor.close();
         }
 
