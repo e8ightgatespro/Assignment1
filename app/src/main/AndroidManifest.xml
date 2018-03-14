@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NightclubRatingActivity"/>
+        <activity android:name=".NightclubListActivity"/>
+        <activity android:name=".NightclubMapActivity"/>
     </application>
 
 </manifest>
