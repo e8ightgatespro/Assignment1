@@ -8,10 +8,10 @@ public class Nightclub {
     private String city;
     private String state;
     private String zipcode;
-    private int beer;
-    private int wine;
-    private int music;
-    private int average;
+    private int beer = 1;
+    private int wine = 1;
+    private int music = 1;
+    private int average = 1;
 
     public int getNightclubID() {
         return nightclubID;

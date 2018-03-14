@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 public class NightclubActivity extends AppCompatActivity {
 
     Nightclub currentNightclub;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
