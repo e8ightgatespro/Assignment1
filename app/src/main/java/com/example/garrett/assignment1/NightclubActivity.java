@@ -1,11 +1,13 @@
 package com.example.garrett.assignment1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -24,11 +26,26 @@ public class NightclubActivity extends AppCompatActivity {
         initListButton();
         initSaveButton();
         initTextChangedEvents();
+        hideKeyboard();
 
 
 
 
 
+    }
+
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        EditText editName = (EditText) findViewById(R.id.editClubName);
+        imm.hideSoftInputFromWindow(editName.getWindowToken(), 0);
+        EditText editStreet = (EditText) findViewById(R.id.editClubStreetAddress);
+        imm.hideSoftInputFromWindow(editStreet.getWindowToken(), 0);
+        EditText editCity = (EditText) findViewById(R.id.editClubCity);
+        imm.hideSoftInputFromWindow(editCity.getWindowToken(), 0);
+        EditText editState = (EditText) findViewById(R.id.editClubState);
+        imm.hideSoftInputFromWindow(editState.getWindowToken(), 0);
+        EditText editZipcode = (EditText) findViewById(R.id.editClubZipcode);
+        imm.hideSoftInputFromWindow(editZipcode.getWindowToken(), 0);
     }
 
 
@@ -39,6 +56,7 @@ public class NightclubActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean wasSuccesful = false;
+                hideKeyboard();
                 NightclubDataSource ds = new NightclubDataSource(NightclubActivity.this);
                 try {
                     ds.open();
@@ -58,7 +76,12 @@ public class NightclubActivity extends AppCompatActivity {
                     wasSuccesful = false;
                 }
 
+                Intent intent = new Intent(NightclubActivity.this, NightclubListActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
             }
+
         });
 
     }
@@ -121,7 +144,7 @@ public class NightclubActivity extends AppCompatActivity {
         });
 
         final EditText etNightClubAddress = findViewById(R.id.editClubStreetAddress);
-        etNightClubName.addTextChangedListener(new TextWatcher() {
+        etNightClubAddress.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -140,7 +163,7 @@ public class NightclubActivity extends AppCompatActivity {
         });
 
         final EditText etNightClubCity = findViewById(R.id.editClubCity);
-        etNightClubName.addTextChangedListener(new TextWatcher() {
+        etNightClubCity.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -159,7 +182,7 @@ public class NightclubActivity extends AppCompatActivity {
         });
 
         final EditText etNightClubState = findViewById(R.id.editClubState);
-        etNightClubName.addTextChangedListener(new TextWatcher() {
+        etNightClubState.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -178,7 +201,7 @@ public class NightclubActivity extends AppCompatActivity {
         });
 
         final EditText etNightClubZipcode = findViewById(R.id.editClubZipcode);
-        etNightClubName.addTextChangedListener(new TextWatcher() {
+        etNightClubZipcode.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 

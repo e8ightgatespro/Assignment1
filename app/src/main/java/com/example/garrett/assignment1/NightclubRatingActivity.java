@@ -1,10 +1,12 @@
 package com.example.garrett.assignment1;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -12,6 +14,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class NightclubRatingActivity extends AppCompatActivity {
 
@@ -35,6 +39,8 @@ public class NightclubRatingActivity extends AppCompatActivity {
         initSaveButton();
         initNightclub(currentNightclub.getNightclubID());
     }
+
+
 
     private void initSaveButton() {
         Button saveButton = (Button) findViewById(R.id.buttonSave);
@@ -62,6 +68,12 @@ public class NightclubRatingActivity extends AppCompatActivity {
                     wasSuccesful = false;
                 }
 
+                Intent intent = new Intent(NightclubRatingActivity.this, NightclubListActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
+
+
             }
         });
 
@@ -78,6 +90,8 @@ public class NightclubRatingActivity extends AppCompatActivity {
             Toast.makeText(this, "Load Nightclub Failed", Toast.LENGTH_LONG).show();
         }
 
+        TextView textClubName = findViewById(R.id.textShowClubName);
+        textClubName.setText(currentNightclub.getNightclubName());
         RadioButton rbBeer1 = findViewById(R.id.radioBeer1);
         RadioButton rbBeer2 = findViewById(R.id.radioBeer2);
         RadioButton rbBeer3 = findViewById(R.id.radioBeer3);
