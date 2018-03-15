@@ -8,10 +8,14 @@ public class Nightclub {
     private String city;
     private String state;
     private String zipcode;
-    private int beer = 1;
-    private int wine = 1;
-    private int music = 1;
-    private int average = 1;
+    private int beer;
+    private int wine;
+    private int music;
+    private double average =  ( beer + wine + music )/3;
+
+    public Nightclub() {
+        nightclubID = -1;
+    }
 
     public int getNightclubID() {
         return nightclubID;
@@ -83,11 +87,11 @@ public class Nightclub {
         this.music = music;
     }
 
-    public int getAverage() {
+    public double getAverage() {
         return average;
     }
 
-    public void setAverage(int average) {
+    public void setAverage(double average) {
         this.average = average;
     }
 }

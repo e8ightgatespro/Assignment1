@@ -8,13 +8,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
 public class NightclubListActivity extends AppCompatActivity {
 
-    boolean isDeleteing = false;
+    boolean isDeleting = false;
     NightclubAdapter adapter;
     ArrayList<Nightclub> nightclubs;
 
@@ -26,26 +27,36 @@ public class NightclubListActivity extends AppCompatActivity {
         initMapButton();
         initListButton();
         initItemClick();
-        initDeleteButton();
+
     }
 
-    private void initDeleteButton() {
-        final Button deleteButton = findViewById(R.id.buttonDeleteNightclub);
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(isDeleteing) {
-                    deleteButton.setText("Delete");
-                    isDeleteing = false;
-                    adapter.notifyDataSetChanged();
-                }
-                else {
-                    deleteButton.setText("Done Deleting");
-                    isDeleteing = true;
-                }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        NightclubDataSource ds = new NightclubDataSource(this);
+
+
+        try {
+            ds.open();
+            nightclubs = ds.getNightclubs();
+            ds.close();
+            if(nightclubs.size() > 0){
+                adapter = new NightclubAdapter(this, nightclubs);
+                ListView listView = (ListView) findViewById(R.id.lvNightclubs);
+                listView.setAdapter(adapter);
             }
-        });
+            else {
+                Intent intent = new Intent(NightclubListActivity.this, NightclubActivity.class);
+                startActivity(intent);
+            }
+        }
+        catch(Exception e) {
+            Toast.makeText(this, "Error retrieving contacts", Toast.LENGTH_LONG).show();
+        }
     }
+
+
 
     private void initItemClick() {
         ListView listView = findViewById(R.id.lvNightclubs);
@@ -53,8 +64,8 @@ public class NightclubListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
                 Nightclub selectedNightclub = nightclubs.get(position);
-                if(isDeleteing) {
-                    adapter.showDelete(position, itemClicked, NightclubListActivity.this, selectedNightclub);
+                if(isDeleting) {
+
                 }
                 else {
                     Intent intent = new Intent(NightclubListActivity.this, NightclubRatingActivity.class);

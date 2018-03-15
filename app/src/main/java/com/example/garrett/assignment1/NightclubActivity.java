@@ -12,7 +12,8 @@ import android.widget.ImageButton;
 
 public class NightclubActivity extends AppCompatActivity {
 
-    Nightclub currentNightclub;
+    Nightclub currentNightclub = new Nightclub();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,10 @@ public class NightclubActivity extends AppCompatActivity {
         initListButton();
         initSaveButton();
         initTextChangedEvents();
+
+
+
+
 
     }
 

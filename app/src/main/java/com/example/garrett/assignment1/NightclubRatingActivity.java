@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class NightclubRatingActivity extends AppCompatActivity {
         initAddButton();
         initListButton();
         initMapButton();
+        radioButtonChangedEvents();
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             initNightclub(extras.getInt("nightclubid"));
@@ -40,6 +42,7 @@ public class NightclubRatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean wasSuccesful = false;
+                currentNightclub.setAverage((currentNightclub.getBeer() + currentNightclub.getWine() + currentNightclub.getMusic()) /3 );
                 NightclubDataSource ds = new NightclubDataSource(NightclubRatingActivity.this);
                 try {
                     ds.open();
@@ -183,6 +186,40 @@ public class NightclubRatingActivity extends AppCompatActivity {
                 Intent intent = new Intent(NightclubRatingActivity.this, NightclubListActivity.class);
                 intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void radioButtonChangedEvents() {
+        final RadioGroup rgBeerRating = findViewById(R.id.rgBeer);
+        rgBeerRating.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton rbBeerRating = (RadioButton)radioGroup.findViewById(i);
+                int Rating = Integer.parseInt(rbBeerRating.getText().toString());
+                currentNightclub.setBeer(Rating);
+
+            }
+        });
+
+        final RadioGroup rgWineRating = findViewById(R.id.rgWine);
+        rgWineRating.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton rbWineRating = (RadioButton)radioGroup.findViewById(i);
+                int Rating = Integer.parseInt(rbWineRating.getText().toString());
+                currentNightclub.setWine(Rating);
+
+            }
+        });
+
+        final RadioGroup rgMusic = findViewById(R.id.rgMusic);
+        rgMusic.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton rbMusicRating = (RadioButton)radioGroup.findViewById(i);
+                int Rating = Integer.parseInt(rbMusicRating.getText().toString());
+                currentNightclub.setMusic(Rating);
             }
         });
     }

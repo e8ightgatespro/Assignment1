@@ -90,10 +90,10 @@ public class NightclubDataSource {
         return lastId;
     }
 
-    public ArrayList<Nightclub> getNightclubs(String sortField, String sortOrder) {
+    public ArrayList<Nightclub> getNightclubs() {
         ArrayList<Nightclub> nightclubs = new ArrayList<Nightclub>();
         try {
-            String query = "SELECT * FROM nightclub ORDER BY " + sortField + " " + sortOrder;
+            String query = "SELECT * FROM nightclub;";
             Cursor cursor = database.rawQuery(query,null);
 
             Nightclub newNightclub;
