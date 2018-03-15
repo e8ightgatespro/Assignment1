@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class NightclubActivity extends AppCompatActivity {
 
@@ -105,6 +106,12 @@ public class NightclubActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NightclubActivity.this, NightclubMapActivity.class);
+                if (currentNightclub.getNightclubID() == -1) {
+                    Toast.makeText(getBaseContext(), "Nightclub must be saved before it can be mapped", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    intent.putExtra("nightclubid", currentNightclub.getNightclubID());
+                }
                 intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
