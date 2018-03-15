@@ -51,20 +51,20 @@ public class NightclubMapActivity extends AppCompatActivity implements OnMapRead
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nightclub);
+        setContentView(R.layout.activity_nightclub_map);
 
         Bundle extras = getIntent().getExtras();
         try {
             NightclubDataSource ds = new NightclubDataSource(NightclubMapActivity.this);
             ds.open();
             if (extras != null) {
-                currentNightclub = ds.getSpecificNightclub(extras.getInt("contactid"));
+                currentNightclub = ds.getSpecificNightclub(extras.getInt("nightclubid"));
             } else {
                 nightclubs = ds.getNightclubs();
             }
             ds.close();
         } catch (Exception e) {
-            Toast.makeText(this, "Contact(s) could not be retrieved.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Nightclub(s) could not be retrieved.", Toast.LENGTH_LONG).show();
         }
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -138,12 +138,12 @@ public class NightclubMapActivity extends AppCompatActivity implements OnMapRead
         }
     }
 
-    protected void OnStart() {
+    protected void onStart() {
         mGoogleApiClient.connect();
         super.onStart();
     }
 
-    protected void OnStop() {
+    protected void onStop() {
         mGoogleApiClient.disconnect();
         super.onStop();
     }
@@ -217,6 +217,9 @@ public class NightclubMapActivity extends AppCompatActivity implements OnMapRead
                         currentNightclub.getCity() + ", " +
                         currentNightclub.getState() + ", " +
                         currentNightclub.getZipcode();
+
+                Double average = currentNightclub.getAverage();
+                String Average = average.toString();
                 try {
                     addresses = geo.getFromLocationName(address, 1);
                 }
@@ -226,7 +229,7 @@ public class NightclubMapActivity extends AppCompatActivity implements OnMapRead
                 LatLng point = new LatLng(addresses.get(0).getLatitude(),addresses.get(0).getLongitude());
                 builder.include(point);
 
-                gMap.addMarker(new MarkerOptions().position(point).title(currentNightclub.getNightclubName()).snippet(address));
+                gMap.addMarker(new MarkerOptions().position(point).title(currentNightclub.getNightclubName()).snippet("Average Rating: " + Average ));
             }
             gMap.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), measureWidth, measureHeight, 450));
         }

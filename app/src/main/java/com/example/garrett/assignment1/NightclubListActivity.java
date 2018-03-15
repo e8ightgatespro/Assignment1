@@ -96,6 +96,7 @@ public class NightclubListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NightclubListActivity.this, NightclubMapActivity.class);
+
                 intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
